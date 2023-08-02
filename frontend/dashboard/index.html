@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="assets/plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
+
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<style>
+		.green-text {
+			color: green;
+		}
+
+		.red-text {
+			background-color: red;
+			color: white;
+			animation: urgencyAnimation 1s infinite;
+			padding: 8px;
+        	border-radius: 5px;
+		}
+		@keyframes urgencyAnimation {
+			0% {
+				opacity: 0.8;
+				transform: scale(1);
+			}
+			50% {
+				opacity: 1;
+				transform: scale(1.1);
+			}
+			100% {
+				opacity: 0.8;
+				transform: scale(1);
+			}
+		}
+
+        /* Change text color */
+        .stats-type.mb-1{
+            color: #16587b; 
+        }
+
+		/* Change background color */
+        .app-card-header.p-3 {
+            background-color: #16587b; /* Replace with your desired background color */
+        }
+
+        /* Change text color */
+        .app-card-header.p-3 h4 {
+            color: white; /* Replace with your desired text color */
+        }
+
+	</style>
+</head> 
+
+<body class="app">   	
+    <header class="app-header fixed-top">	   	            
+        <div class="app-header-inner">  
+	        <div class="container-fluid py-2">
+		        <div class="app-header-content"> 
+		            <div class="row justify-content-between align-items-center">
+			        
+				    <div class="col-auto">
+					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+					    </a>
+				    </div><!--//col-->
+		            <div class="search-mobile-trigger d-sm-none col">
+			            <i class="search-mobile-trigger-icon fa-solid fa-magnifying-glass"></i>
+			        </div><!--//col-->
+		        </div><!--//row-->
+	            </div><!--//app-header-content-->
+	        </div><!--//container-fluid-->
+        </div><!--//app-header-inner-->
+        <div id="app-sidepanel" class="app-sidepanel"> 
+	        <div id="sidepanel-drop" class="sidepanel-drop"></div>
+	        <div class="sidepanel-inner d-flex flex-column">
+		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+		        
+			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link active" href="index.html">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		  <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
+		  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		</svg>
+						         </span>
+		                         <span class="nav-link-text">Overview</span>
+					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="search.html">
+						        <span class="nav-icon">
+						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="search-mobile-trigger-icon fa-solid fa-magnifying-glass" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+	</svg>
+						         </span>
+		                         <span class="nav-link-text">Search</span>
+					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->
+					    			    
+				    </ul><!--//app-menu-->
+			    </nav><!--//app-nav-->  
+	        </div><!--//sidepanel-inner-->
+	    </div><!--//app-sidepanel-->
+    </header><!--//app-header-->
+    
+    <div class="app-wrapper">
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl">
+			    <h1 class="app-page-title">Overview</h1>
+			    <div class="row g-4 mb-4 justify-content-center align-items-center">
+				    <div class="col-6 col-lg-2">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">GRB</h4>
+							    <div class="stats-figure" id="grb"></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+				    
+				    <div class="col-6 col-lg-2">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-6">
+							    <h4 class="stats-type mb-1">Apparent Brightness Rise</h4>
+							    <div class="stats-figure" id="abr"></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+
+					<div class="col-6 col-lg-2">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">UV Rise</h4>
+							    <div class="stats-figure" id="uvr"></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+					
+				    <div class="col-6 col-lg-2">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">X-Ray Rise</h4>
+							    <div class="stats-figure" id="xrr"></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+
+				    <div class="col-6 col-lg-2">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Comet</h4>
+							    <div class="stats-figure" id="comet"></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+			    </div><!--//row-->
+
+			    <div class="row g-4 mb-4">
+			        <div class="col-12 col-lg-6">
+						<div class="app-card app-card-stats-table h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Recent Events</h4>
+							        </div><!--//col-->
+						        </div><!--//row-->
+					        </div><!--//app-card-header-->
+					        <div class="app-card-body p-3 p-lg-4">
+						        <div id="recent-events-card-container">
+									<table class="table table-striped" style="max-height: 300px; overflow-y: auto;">
+										<thead>
+											<tr>
+												<th>Date and Time </th>
+												<th>Source</th>
+												<th>Event Type</th>
+												<th>Urgency</th>
+											</tr>
+										</thead>
+										<tbody id="recent-events-table-body">
+											<!-- This is where the search results table will be generated -->
+										</tbody>
+									</table>
+								</div><!--//result-card-container-->
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->
+				        
+			        </div><!--//col-->
+			        <div class="col-12 col-lg-6">
+						<div class="app-card app-card-stats-table h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Latest Event</h4>
+							        </div><!--//col-->
+						        </div><!--//row-->
+					        </div><!--//app-card-header-->
+					        <div class="app-card-body p-3 p-lg-4">
+						        <div class="table-responsive">
+							        <table class="table table-borderless mb-0">
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Event Type</h4>
+														<div id ="event-type-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Name</h4>
+														<div id= "name-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Source</h4>
+														<div id="source-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Urgency</h4>
+														<div id="urgency-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Date and Time</h4>
+														<div id="date-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">RA</h4>
+														<div id="ra-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+								
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">DEC</h4>
+														<div id="dec-latest"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+									</table>
+						        </div><!--//table-responsive-->
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->
+			        </div><!--//col-->    
+			    </div><!--//row-->
+
+				<div class="row g-4 mb-4">
+			        <div class="col-12 col-lg-6">
+						<div class="app-card app-card-stats-table h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Near Earth Objects in Last 24H</h4>
+							        </div><!--//col-->
+						        </div><!--//row-->
+					        </div><!--//app-card-header-->
+							<div class="app-card-body p-3 p-lg-4">
+						        <div id="recent-events-card-container">
+									<table class="table table-striped" style="max-height: 300px; overflow-y: auto;">
+										<thead>
+											<tr>
+												<th>Name </th>
+												<th>Reference ID</th>
+												<th>Hazardess</th>
+												<th>Miss Distance (KM)</th>
+											</tr>
+										</thead>
+										<tbody id="neo-last-24-table-body">
+											<!-- This is where the search results table will be generated -->
+										</tbody>
+									</table>
+								</div><!--//result-card-container-->
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->   
+			        </div><!--//col-->
+
+					<div class="col-12 col-lg-6">
+						<div class="app-card app-card-stats-table h-100 shadow-sm">
+					        <div class="app-card-header p-3">
+						        <div class="row justify-content-between align-items-center">
+							        <div class="col-auto">
+						                <h4 class="app-card-title">Near Earth Objects in Next 24H</h4>
+							        </div><!--//col-->
+						        </div><!--//row-->
+					        </div><!--//app-card-header-->
+							<div class="app-card-body p-3 p-lg-4">
+						        <div id="recent-events-card-container">
+									<table class="table table-striped" style="max-height: 300px; overflow-y: auto;">
+										<thead>
+											<tr>
+												<th>Name </th>
+												<th>Reference ID</th>
+												<th>Hazardess</th>
+												<th>Miss Distance (KM)</th>
+											</tr>
+										</thead>
+										<tbody id="neo-next-24-table-body">
+											<!-- This is where the search results table will be generated -->
+										</tbody>
+									</table>
+								</div><!--//result-card-container-->
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->   
+			        </div><!--//col-->
+			    </div><!--//row-->
+
+				<div class="row g-4 mb-4">
+				    <div class="col-12 col-lg-6">
+						<div class="app-card app-card-chart h-100 shadow-sm">
+					        <div class="app-card-header p-3 border-0">
+						        <h4 class="app-card-title">Events By Urgency</h4>
+					        </div><!--//app-card-header-->
+					        <div class="app-card-body p-4">					   
+						        <div class="chart-container">
+				                    <canvas id="chart-stacked-urgency" ></canvas>
+						        </div>
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->
+					</div><!--//col-->
+
+					<div class="col-12 col-lg-6">
+						<div class="app-card app-card-chart h-100 shadow-sm">
+					        <div class="app-card-header p-3 border-0">
+						        <h4 class="app-card-title">Astroids By Size (Meters) in Last Month</h4>
+					        </div><!--//app-card-header-->
+					        <div class="app-card-body p-4">					   
+						        <div class="chart-container">
+				                    <canvas id="astroid-chart" width="800" height="400" ></canvas>
+						        </div>
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->
+					</div><!--//col-->
+				</div><!--//row-->
+
+
+			    <div class="row g-4 mb-4">
+					<div class="col-12 col-lg-6"> 
+						<div class="app-card app-card-stats-table h-100 shadow-sm">
+							<div class="app-card-header p-3">
+								<div class="row justify-content-between align-items-center">
+									<div class="col-auto">
+										<h4 class="app-card-title">Current Sun Info</h4>
+									</div><!--//col-->
+								</div><!--//row-->
+							</div><!--//app-card-header-->
+							<div class="app-card-body p-3 p-lg-4">
+								<div class="table-responsive">
+									<table class="table table-borderless mb-0">
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Rise Time</h4>
+														<div id= "rise-time"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+		
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Set Time</h4>
+														<div id="set-time"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+		
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-4">
+														<h4 class="stats-type mb-1">Transit Time</h4>
+														<div id ="transit-time"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+		
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Constellation</h4>
+														<div id="constellation"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+		
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Right Ascension (RA)</h4>
+														<div id="ra"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+								
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Declination (DEC)</h4>
+														<div id="dec"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+		
+										<div class="row g-4 mb-4 justify-content-around">
+											<div class="col-6 col-lg-4">
+												<div class="app-card app-card-stat shadow-sm h-100">
+													<div class="app-card-body p-3 p-lg-6">
+														<h4 class="stats-type mb-1">Magnitude</h4>
+														<div id="magnitude"></div>
+													</div><!--//app-card-body-->
+													<a class="app-card-link-mask" href="#"></a>
+												</div><!--//app-card-->
+											</div><!--//col-->
+										</div><!--//row-->
+									</table>
+								</div><!--//table-responsive-->
+							</div><!--//app-card-body-->
+						</div><!--//app-card-->
+					</div> <!--//col-->
+				    
+			        <div class="col-12 col-lg-6">
+						<div class="app-card app-card-photo h-100 shadow-sm">
+					        <div class="app-card-header p-3 border-0">
+						        <h4 class="app-card-title">Current Sun Visual</h4>
+					        </div><!--//app-card-header-->
+					        <div class="app-card-body p-4">					   
+						       <!-- Add an img element with a placeholder source -->
+							   <img id="sun-photo" src="placeholder.jpg" alt="Sun Photo" style="max-width: 100%; height: auto;">
+					        </div><!--//app-card-body-->
+				        </div><!--//app-card-->
+					</div><!--//col-->	
+			    </div><!--//row-->
+		    </div><!--//container-fluid-->
+	    </div><!--//app-content-->
+	    
+    </div><!--//app-wrapper-->    					
+
+ 
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+
+    <!-- Charts JS -->
+    <script src="assets/plugins/chart.js/chart.min.js"></script> 
+    <script src="assets/js/index-charts.js"></script> 
+
+    <!-- Page Specific JS -->
+    <script src="assets/js/app.js"></script> 
+
+	<script>
+		// Function to fetch the latest event data from the server
+		function fetchRecentEvents() {
+			const tableBody = document.getElementById('recent-events-table-body');
+			tableBody.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+
+			const url = 'http://localhost:3001/getrecent';
+			fetch(url)
+				.then(response => response.json())
+				.then((results) => {
+					console.log(results.length);
+					// Clear the table body
+					tableBody.innerHTML = '';
+
+					// Loop through each result and add it to the table
+					results.forEach((result) => {
+						console.log(result);
+						const row = document.createElement('tr');
+						
+						const timeAndDate = document.createElement('td');
+						timeAndDate.textContent = result.date;
+						row.appendChild(timeAndDate);
+
+						const source = document.createElement('td');
+						source.textContent = result.source;
+						row.appendChild(source);
+
+						const eventType = document.createElement('td');
+						eventType.textContent = result.event;
+						row.appendChild(eventType);
+
+						const urgency = document.createElement('td');
+						urgency.textContent = result.urgency;
+
+						// change color of urgency
+						if(result.urgency <= 3){
+							urgency.style.color = "green";
+						}
+						else{
+							urgency.style.color = "red";
+						}
+						row.appendChild(urgency);
+
+						tableBody.appendChild(row);
+					});
+				})
+				.catch((error) => {
+					console.log(error);
+					tableBody.innerHTML = '<tr><td colspan="4">An error occurred while fetching results.</td></tr>';
+				});
+		}
+		// Call the function to fetch and display the latest event data
+		fetchRecentEvents();
+	</script>
+	
+	<script>
+		// function to fetch most recent event and display it in Latest Event
+		function fetchLatestEvent() {
+			const url = 'http://localhost:3001/getlast';
+			fetch(url)
+			.then(response => response.json())
+			.then((result) => {
+					console.log(result);
+				const eventType = document.getElementById('event-type-latest');
+				eventType.innerHTML = '<div class="app-card-body p-3 p-lg-3"><h6>' + result.event + '</h6></div>';
+
+				const name = document.getElementById('name-latest');
+				name.innerHTML = '<div class="app-card-body p-3 p-lg-3"><h6>' + result.name + '</h6></div>';
+
+				const source = document.getElementById('source-latest');
+				source.innerHTML = '<div class="app-card-body p-3 p-lg-3"><h6>' + result.source + '</h6></div>';
+
+				const urgency = document.getElementById('urgency-latest');
+				if(result.urgency <= 3){
+					urgency.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2 class="green-text">' + result.urgency + '</h2></div>';
+				}
+				else{
+					urgency.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2 class="red-text">' + result.urgency + '</h2></div>';
+				}
+
+				const date = document.getElementById('date-latest');
+				date.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h6>' + result.date + '</h6></div>';
+
+				const ra = document.getElementById('ra-latest');
+				ra.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h6>' + result.ra + '</h6></div>';
+
+				const dec = document.getElementById('dec-latest');
+				dec.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h6>' + result.dec + '</h6></div>';
+
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+		}
+		// Call the function to fetch and display the latest event data
+		fetchLatestEvent();
+	</script>
+
+	<script>
+		function fetchAmounts(){
+			const url = 'http://localhost:3001/geteventcounts';
+			fetch(url)
+			.then(response => response.json())
+			.then((result) => {
+				console.log(result);
+				const grb = document.getElementById('grb');
+				grb.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2>' + result["GRB"] + '</h2></div>';
+
+				const abr = document.getElementById('abr');
+				abr.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2>' + result["Apparent Brightness Rise"]  + '</h2></div>';
+
+				const uvr = document.getElementById('uvr');
+				uvr.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2>' + result["UV Rise"] + '</h2></div>';
+
+				const xrr = document.getElementById('xrr');
+				xrr.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2>' + result["X-Ray Rise"] + '</h2></div>';
+
+				const comet = document.getElementById('comet');
+				comet.innerHTML = '<div class="app-card-body p-3 p-lg-4"><h2>' + result["Comet"] + '</h2></div>';
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+		}
+		fetchAmounts();
+	</script>
+
+	<script>
+		// Get the canvas element
+		var canvas = document.getElementById('chart-stacked-urgency');
+
+		// Function to fetch data from the server
+		function fetchUrgencyDist() {
+			const url = 'http://localhost:3001/geteventdistribution';
+			fetch(url)
+				.then((response) => response.json())
+				.then((data) => {
+					// Call the function to create the chart
+					createStackedBarChart(data);
+				})
+				.catch((error) => {
+					console.error('Error fetching data:', error);
+				});
+		}
+
+		// Function to create the stacked bar chart
+		function createStackedBarChart(data) {
+        var labels = Object.keys(data);
+        var urgencyLevels = ['1', '2', '3', '4', '5'];
+
+        var datasets = urgencyLevels.map((urgency) => ({
+            label: urgency,
+            data: labels.map((eventType) => data[eventType][urgency] || 0),
+            backgroundColor: getUrgencyColor(urgency),
+        }));
+
+        var ctx = document.getElementById('chart-stacked-urgency').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: datasets,
+            },
+            options: {
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                    },
+                },
+            },
+        });
+    }
+
+    // Function to get urgency color based on urgency level
+    function getUrgencyColor(urgency) {
+        switch (urgency) {
+            case '1':
+                return 'yellow';
+            case '2':
+                return 'blue';
+            case '3':
+                return 'green';
+            case '4':
+                return 'orange';
+            case '5':
+                return 'red';
+            default:
+                return 'gray';
+        }
+    }
+
+		// Call the fetchData function to fetch data and create the chart
+		console.log("fetching urgency distribution");
+		fetchUrgencyDist();
+		console.log("worked");
+	</script>
+
+	<script>
+		// Function to fetch neo in last and next 24 hours
+		function fetchNEOS() {
+			const tableBodyLast = document.getElementById('neo-last-24-table-body');
+			tableBodyLast.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+
+			const tableBodyNext = document.getElementById('neo-next-24-table-body');
+			tableBodyNext.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+
+			const url = 'http://localhost:3001/getneos';
+			fetch(url)
+				.then(response => response.json())
+				.then((results) => {
+					console.log(results.length);
+					// Clear the table body
+					tableBodyLast.innerHTML = '';
+					tableBodyNext.innerHTML = '';
+
+					// Loop through each result and add it to the table
+					results["last"].forEach((result) => {
+						console.log(result);
+
+						// last 24 hours
+						const rowLast = document.createElement('tr');
+						
+						const nameLast = document.createElement('td');
+						nameLast.textContent = result["name"];
+						rowLast.appendChild(nameLast);
+
+						const referenceIDLast = document.createElement('td');
+						referenceIDLast.textContent = result["neo_reference_id"];
+						rowLast.appendChild(referenceIDLast);
+
+						const hazardessLast = document.createElement('td');
+						hazardessLast.textContent = result["is_potentially_hazardous_asteroid"];
+						rowLast.appendChild(hazardessLast);
+
+						const missDistanceLast = document.createElement('td');
+						result["close_approach_data"].forEach((closeApproach) => {
+							missDistanceLast.textContent = closeApproach["miss_distance"]["kilometers"];
+						});
+						rowLast.appendChild(missDistanceLast);
+
+						tableBodyLast.appendChild(rowLast);
+					});
+
+					// next 24 hours
+					results["next"].forEach((result) => {
+						console.log(result);
+						const rowNext = document.createElement('tr');
+
+						const nameNext = document.createElement('td');
+						nameNext.textContent = result["name"];
+						rowNext.appendChild(nameNext);
+
+						const referenceIDNext = document.createElement('td');
+						referenceIDNext.textContent = result["neo_reference_id"];
+						rowNext.appendChild(referenceIDNext);
+
+						const hazardessNext = document.createElement('td');
+						hazardessNext.textContent = result["is_potentially_hazardous_asteroid"];
+						rowNext.appendChild(hazardessNext);
+
+						const missDistanceNext = document.createElement('td');
+						result["close_approach_data"].forEach((closeApproach) => {
+							missDistanceNext.textContent = closeApproach["miss_distance"]["kilometers"];
+						});
+						rowNext.appendChild(missDistanceNext);
+
+						tableBodyNext.appendChild(rowNext);
+					});
+				})
+				.catch((error) => {
+					console.log(error);
+					tableBodyLast.innerHTML = '<tr><td colspan="4">An error occurred while fetching results.</td></tr>';
+					tableBodyNext.innerHTML = '<tr><td colspan="4">An error occurred while fetching results.</td></tr>';
+				});
+		}
+		// Call the function to fetch and display the near earth objects data
+		fetchNEOS();
+	</script>
+
+	<script>
+		// Function to fetch data from the server
+		function fetchNeoDist() {
+			const url = 'http://localhost:3001/getneodistribution';
+			fetch(url)
+				.then((response) => response.json())
+				.then((asteroidSizes) => {
+					// Assume 'asteroidSizes' is the array of asteroid sizes received from the server
+
+				// Calculate the number of bins for the histogram
+				const numBins = 50;
+
+				// Calculate the minimum and maximum size of asteroids
+				const minSize = Math.min(...asteroidSizes);
+				const maxSize = Math.max(...asteroidSizes);
+
+				// Calculate the width of each bin
+				const binWidth = (maxSize - minSize) / numBins;
+
+				// Initialize the histogram data
+				const histogramData = Array(numBins).fill(0);
+
+				// Calculate the frequency of sizes in each bin
+				for (const size of asteroidSizes) {
+				const binIndex = Math.floor((size - minSize) / binWidth);
+				if (binIndex >= 0 && binIndex < numBins) {
+					histogramData[binIndex]++;
+				}
+				}
+
+				// Generate labels for the histogram (e.g., bin ranges)
+				const binLabels = Array(numBins).fill().map((_, i) => {
+				const start = minSize + i * binWidth;
+				const end = start + binWidth;
+				return `${start.toFixed(2)} - ${end.toFixed(2)}`;
+				});
+
+				// Create the chart using Chart.js
+				var ctx = document.getElementById('astroid-chart').getContext('2d');
+				var chart = new Chart(ctx, {
+				type: 'bar', // Set the chart type to 'bar'
+				data: {
+					labels: binLabels,
+					datasets: [{
+					label: 'Frequency',
+					data: histogramData,
+					backgroundColor: 'rgba(54, 162, 235, 0.6)',
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					scales: {
+					x: {
+						title: {
+						display: true,
+						text: 'Asteroid Size',
+						},
+					},
+					y: {
+						beginAtZero: true,
+						title: {
+						display: true,
+						text: 'Frequency',
+						},
+					}
+					}
+				},
+				});
+				})
+				.catch((error) => {
+					console.error('Error fetching data:', error);
+				});
+		}
+
+		// Call the fetchData function to fetch data and create the histogram
+		fetchNeoDist();
+	</script>
+
+	<script>
+		// Function to fetch sun info from server
+		function fetchSunInfo(){
+			const url = 'http://localhost:3001/sundata';
+			fetch(url)
+				.then(response => response.json())
+				.then((result) => {
+					console.log(result.length);
+
+					const riseTime = document.getElementById('rise-time');
+					riseTime.textContent = result["rise_time"];
+					
+					const transitTime = document.getElementById('transit-time');
+					transitTime.textContent = result["transit_time"];
+
+					const setTime = document.getElementById('set-time');
+					setTime.textContent = result["set_time"];
+
+					const ra = document.getElementById('ra');
+					ra.textContent = result["ra"];
+
+					const dec = document.getElementById('dec');
+					dec.textContent = result["dec"];
+
+					const constellation = document.getElementById('constellation');
+					constellation.textContent = result["constellation"];
+
+					const magnitude = document.getElementById('magnitude');
+					magnitude.textContent = result["magnitude"];
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+
+		// Call the function to fetch and display the sun info data
+		fetchSunInfo();
+	</script>
+
+	<script>
+		// Function to fetch sun photo from the server
+		function fetchSunPhoto() {
+			const url = "http://localhost:3001/sunspots"
+			fetch(url)
+				.then((response) => response.blob())
+				.then((blob) => {
+					// Convert the Blob data to an object URL
+					var objectURL = URL.createObjectURL(blob);
+
+					// Set the src attribute of the img element to the object URL
+					document.getElementById('sun-photo').src = objectURL;
+				})
+				.catch((error) => {
+					console.error('Error fetching sun photo:', error);
+				});
+		}
+
+		// Call the fetchSunPhoto function to fetch the sun photo from the server
+		fetchSunPhoto();
+	</script>
+
+	<script>
+
+		// Create a WebSocket connection to the server
+		const ws = new WebSocket('ws://localhost:8080');
+		// Handle messages received from the WebSocket server
+		ws.onmessage = (event) => {
+			console.log("received message from websocket: " + event.data)
+			const data = JSON.parse(event.data);
+			const displayString = `URGENT MESSAGE RECEIVED: \n Event Type: ${data.event} \n Event Name: ${data.name} \n Source: ${data.source} \n Urgency:${data.urgency} \n Date: ${data.date} \n RA: ${data.ra} \n DEC: ${data.dec}`;
+		 	alert(displayString); // Display the pop-up message
+		};
+
+	  </script>
+</body>
+</html> 
+
